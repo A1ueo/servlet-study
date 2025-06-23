@@ -32,7 +32,4 @@ public class InputNameServlet extends HttpServlet {
 		// 클라이언트가 Post방식으로 요청을 보냈을 때 요청을 받는 메소드
 		super.doPost(req, resp);
 	}
-	
-	
-
 }
