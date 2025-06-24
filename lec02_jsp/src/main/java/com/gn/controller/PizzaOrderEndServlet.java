@@ -36,14 +36,18 @@ public class PizzaOrderEndServlet extends HttpServlet {
 		String userPhone = request.getParameter("user_phone");
 		String userEmail = request.getParameter("user_email");
 		int size = Integer.parseInt(request.getParameter("size"));
-		String shrimp = request.getParameter("shrimp");
-		String sweet = request.getParameter("sweet");
-		String potato = request.getParameter("potato");
-		String pine = request.getParameter("pine");
+//		String shrimp = request.getParameter("shrimp");
+//		String sweet = request.getParameter("sweet");
+//		String potato = request.getParameter("potato");
+//		String pine = request.getParameter("pine");
+		String[] toppingArr = request.getParameterValues("toppings");
 		String deliveryTime = request.getParameter("delivery_time");
 		
 		System.out.printf("%s %s %s%n", userName, userPhone, userEmail);
-		System.out.printf("%s %s %s %s %s%n", size, shrimp, sweet, potato, pine);
+		for (String topping : toppingArr)
+			System.out.print(topping + " ");
+		System.out.println();
+		System.out.println(deliveryTime);
 		
 		String pizzaSize = "";
 		int price = 0;
@@ -62,9 +66,8 @@ public class PizzaOrderEndServlet extends HttpServlet {
 			break;
 		}
 		
-		String[] toppings = {shrimp, sweet, potato, pine};
 		List<String> toppingList = new ArrayList<String>();
-		for (String str : toppings) {
+		for (String str : toppingArr) {
 			if (str != null) {
 				if ("1".equals(str)) price += 2000;
 				else price += 1000;

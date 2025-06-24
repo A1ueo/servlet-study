@@ -33,16 +33,16 @@
     </fieldset>
     <fieldset>
         <legend>토핑 선택</legend>
-        <input type="checkbox" id="shrimp" value="1" name="shrimp">
+        <input type="checkbox" id="shrimp" value="1" name="toppings">
         <label for="shrimp">새우</label>
         <br>
-        <input type="checkbox" id="sweet" value="2" name="sweet">
+        <input type="checkbox" id="sweet" value="2" name="toppings">
         <label for="sweet">고구마</label>
         <br>
-        <input type="checkbox" id="potato" value="3" name="potato">
+        <input type="checkbox" id="potato" value="3" name="toppings">
         <label for="potato">감자</label>
         <br>
-        <input type="checkbox" id="pine" value="4" name="pine">
+        <input type="checkbox" id="pine" value="4" name="toppings">
         <label for="pine">파인애플</label>
     </fieldset>
     <br>
