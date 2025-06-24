@@ -16,6 +16,9 @@
   <a href="/pageView">페이지 태그 연습</a>
   
   <h1>4. 도서 대출</h1>
-  <a href="/bookReserve">도서 대출 페이지</a>
+  <a href="/bookReserve">도서 대출하기</a>
+  
+  <h1>5. 피자 주문</h1>
+  <a href="/pizzaOrder">피자 주문하기</a>
 </body>
 </html>

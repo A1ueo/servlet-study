@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <%
-    // getAttribute()로 가져온 데이터는 Object형
-    String phone = (String) request.getAttribute("phone");
-    String email = (String) request.getAttribute("email");
-    int price = (int) request.getAttribute("price");
-  %>
+<%
+  // getAttribute()로 가져온 데이터는 Object형
+  String phone = (String) request.getAttribute("phone");
+  String email = (String) request.getAttribute("email");
+  int price = (int) request.getAttribute("price");
+%>
 <!DOCTYPE html>
 <html>
 <head>
