@@ -9,5 +9,13 @@
 <body>
   <h1>1. JSP Scripting Element</h1>
   <a href="views/scripting_element.jsp">스크립팅 요소 연습</a>
+  <h1>2. Directive Tag (page)</h1>
+  <a href="views/page_element.jsp">페이지 태그 연습</a>
+  <h1>3. Driective Tag(include)</h1>
+  <!-- <a href="views/include_element.jsp">include 태그 연습</a> -->
+  <a href="/pageView">페이지 태그 연습</a>
+  
+  <h1>4. 도서 대출</h1>
+  <a href="/bookReserve">도서 대출 페이지</a>
 </body>
 </html>
