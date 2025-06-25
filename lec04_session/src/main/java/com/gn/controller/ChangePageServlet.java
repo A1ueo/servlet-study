@@ -37,7 +37,9 @@ public class ChangePageServlet extends HttpServlet {
 				count = Integer.parseInt(cookie.getValue());
 			}
 		}
-		response.addCookie(new Cookie("visit_count", String.valueOf(count + 1)));
+		Cookie newCookie = new Cookie("visit_count", String.valueOf(count + 1));
+		newCookie.setMaxAge(60 * 60 * 24);
+		response.addCookie(newCookie);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/views/countPage.jsp");
 		view.forward(request, response);
