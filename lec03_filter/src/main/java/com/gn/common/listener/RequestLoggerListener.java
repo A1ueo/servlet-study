@@ -22,7 +22,6 @@ public class RequestLoggerListener implements ServletRequestListener {
      * @see ServletRequestListener#requestInitialized(ServletRequestEvent)
      */
     public void requestInitialized(ServletRequestEvent sre)  { 
-         // TODO Auto-generated method stub
     	System.out.println("============ 새로운 요청이 들어왔습니다! ============");
     }
 
@@ -30,7 +29,6 @@ public class RequestLoggerListener implements ServletRequestListener {
      * @see ServletRequestListener#requestDestroyed(ServletRequestEvent)
      */
     public void requestDestroyed(ServletRequestEvent sre)  { 
-         // TODO Auto-generated method stub
     	System.out.println("============ 요청이 처리되었습니다. ============");
     }
 	

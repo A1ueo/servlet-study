@@ -23,5 +23,10 @@
     <input type="submit" value="작성">
   </form>
   
+  <form action="/comment/write" method="post">
+    <input type="text" name="writer" placeholder="작성자명 입력">
+    <input type="submit" value="댓글 작성">
+  </form>
+
 </body>
 </html>

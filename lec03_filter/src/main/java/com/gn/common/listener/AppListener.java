@@ -15,14 +15,12 @@ public class AppListener implements ServletContextListener {
      * Default constructor. 
      */
     public AppListener() {
-        // TODO Auto-generated constructor stub
     }
 
 	/**
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent sce)  { 
-         // TODO Auto-generated method stub
     	System.out.println("============ 서버 시작 시 호출 ============");
     }
 

@@ -21,7 +21,6 @@ public class BookReserveEndServlet extends HttpServlet {
      */
     public BookReserveEndServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
