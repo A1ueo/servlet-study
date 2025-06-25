@@ -14,12 +14,14 @@ import jakarta.servlet.http.HttpServletRequest;
 public class MsgFilter implements Filter {
 
 	@Override
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		System.out.println("[MsgFilter] 요청 가로챔");
+		
 		// ServletRequest는 HttpServletRequest의 부모
-		MsgRequestWrapper wrappedRequest = new MsgRequestWrapper((HttpServletRequest) arg0);
-		arg2.doFilter(wrappedRequest, arg1);
+		MsgRequestWrapper wrappedRequest = new MsgRequestWrapper((HttpServletRequest) request);
+		
+		chain.doFilter(wrappedRequest, response);
 		System.out.println("[MsgFilter] 응답 가로챔");
 	}
 
