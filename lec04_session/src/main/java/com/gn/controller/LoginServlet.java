@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
 				String name = "관리자";
 				Account account = new Account(userId, name);
 				session.setAttribute("account", account);
+				session.setMaxInactiveInterval(60 * 30);
+				
 				System.out.println("로그인 세션");
 			}
 		}
