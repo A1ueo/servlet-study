@@ -31,7 +31,7 @@ public class RemoveNickServlet extends HttpServlet {
 		Cookie cookie = new Cookie("nickname", "____");
 		cookie.setMaxAge(0);
 		response.addCookie(cookie);
-		response.sendRedirect("/");
+		response.sendRedirect("/practiceCookie");
 	}
 
 	/**
