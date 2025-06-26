@@ -36,8 +36,8 @@ public class LoginServlet extends HttpServlet {
 				System.out.println("로그인 세션");
 			}
 		}
-		Account acc = (Account) session.getAttribute("account");
-		System.out.println(acc);
+//		Account acc = (Account) session.getAttribute("account");
+//		System.out.println(acc);
 		
 		response.sendRedirect("/");
 	}

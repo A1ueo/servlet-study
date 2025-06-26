@@ -5,9 +5,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-//@ToString
-public class Account {
-	private String userId;
+public class Product {
+	private int code;
 	private String name;
-
+	private int price;
 }

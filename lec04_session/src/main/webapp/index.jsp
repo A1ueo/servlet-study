@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		pageEncoding="UTF-8"%>
 <%@ page import="java.util.Map, java.util.HashMap"%>
-<%@ page import="com.gn.dto.Account" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,29 +8,7 @@
 <title>쿠키, 세션</title>
 </head>
 <body>
-	<%
-		String name = "관리자";
-		if (session != null) {
-			Account account = (Account) session.getAttribute("account");
-			if (account != null 
-					&& name.equals(account.getName())) {
-	%>
-				<p>관리자님 환영합니다!</p>
-				<a href="/logout">로그아웃</a>
-	<%
-			} else {
-	%>
-		<form action="/login" method="post">
-			<label>아이디 : </label>
-			<input type="text" name="user_id"><br>
-			<label>비밀번호 : </label>
-			<input type="password" name="user_pw">
-			<input type="submit" value="로그인">
-		</form>
-	<%		}
-		} 
-	%>
-		
+	<%@include file="views/login.jsp" %>
 
 	<h1>Cookie</h1>
 	<ul>
@@ -77,6 +54,9 @@
 		</li>
 		<li>
 			<a href="/removeSession">세션 삭제</a>
+		</li>
+		<li>
+			<a href="/productList">상품 목록</a>
 		</li>
 	</ol>
 	
