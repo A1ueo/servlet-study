@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="java.util.List, com.gn.dto.Product" %>
+<%@page import="java.util.List, java.util.ArrayList" %>
 <%@page import="com.gn.dto.Product"%>
 <!DOCTYPE html>
 <html>
@@ -11,14 +11,11 @@
 <body>
 	<form action="/addToCart" method="post">
 		<select name="product">
-			<% List<Product> list = (List<Product>) request.getAttribute("productList");
-				int count = 0;
+			<% List<Product> list = (List) request.getAttribute("productList");
 				for (Product p : list) {
 			%>
-				<!-- params로 넘기기 -->
 				<option value="<%= p.getName() %>"><%= p.getName() %></option>
 			<%
-				count++;
 				}
 			%>
 		</select>

@@ -1,4 +1,4 @@
-package com.gn.controller;
+package com.gn.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,7 +30,6 @@ public class ProductListServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/productPage.jsp");
 		request.setAttribute("productList", list);
 		dispatcher.forward(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

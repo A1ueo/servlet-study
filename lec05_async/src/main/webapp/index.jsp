@@ -9,6 +9,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
+	<%@include file="views/scoreCalc.jsp" %>
+
 	<h1>1. 텍스트 데이터</h1>
 	<h2>(1) GET 방식</h2>
 	<input type="text" name="user_id" id="user_id">
@@ -54,7 +56,7 @@
 					success : function(data) {
 						const p = $("<p>").text(data);
 						$("#ajax_post_div").append(p);
-					},
+				},
 					error : function() {
 						alert("요청 실패!");
 					}
