@@ -9,7 +9,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-	<%@include file="views/scoreCalc.jsp" %>
+	<%@ include file="views/searchBook.jsp" %>
+	<%@ include file="views/scoreCalc.jsp" %>
+	
 
 	<h1>1. 텍스트 데이터</h1>
 	<h2>(1) GET 방식</h2>
@@ -64,5 +66,93 @@
 			});
 		});
 	</script>
+	
+	<h1>JSON + AJAX</h1>
+	<input type="text" id="searchName">
+	<button type="button" id="json_get_btn">조회</button>
+	<div id="json_get_div"></div>
+	<script type="text/javascript">
+		$(function () {
+			$("#json_get_btn").click(function() {
+				// 1. 사용자 이름 정보 가져오기
+				const keyword = $("#searchName").val();
+				// 2. get방식(비동기) 요청
+				$.ajax({
+					url : "/searchAccount?name=" + keyword,
+					type : "get",
+					dataType : "json",
+					success : function(data) {
+						// 4. 화면에 목록 형태로 출력
+						/* 
+						const no = data.no;
+						const name = data.name;
+						$('#json_get_div').append('<p>' + no + '번: ' + name + '<p>');
+						*/
+						const arr = data.arr;
+						if (arr.length != 0) {
+							for (let i = 0; i < arr.length; i++) {
+								const account = arr[i];
+								$('#json_get_div').append('<p>' + account.no + '번: ' 
+										+ account.name + '<p>');
+							}
+						}
+
+					},
+				});
+				
+			});
+		});
+	</script>
+	
+	<h1>카테고리별 상품 조회</h1>
+	<select id="categorySelect">
+		<option value="1">전자제품</option>
+		<option value="2">생활용품</option>
+		<option value="3">패션</option>
+	</select>
+	<button type="button" id="searchBtn">조회</button>
+	<div id="productListArea"></div>
+	<script type="text/javascript">
+		$(function() {
+			$('#categorySelect').change(function() {
+				// 1. 선택된 카테고리 정보 가져오기
+				const categoryCode = $(this).val();
+				// 2. ajax 통신을 통해 목록 조회
+				$.ajax({
+					url : '/searchProduct',
+					type : 'post',
+					data : {code : categoryCode},
+					dataType : 'json',
+					success : function(data) {
+						// 3. 화면에 출력하기
+						const arr = data;
+						console.log(arr);
+						if (arr.length === 0) {
+							$('#productListArea').html('해당 카테고리의 상품이 없습니다.');
+						} else {
+							$('#productListArea').empty();
+							for (let product of arr) {
+								$('#productListArea').append('<p>' + product.name + '은 '
+										+ product.price + '원 입니다.</p>');
+							}
+						}
+						
+					},
+				});
+			});
+		});
+	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

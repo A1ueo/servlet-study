@@ -25,7 +25,7 @@
 	<div id="resultArea"></div>
 	
 	<script type="text/javascript">
-		$(document).ready(function() {
+		$(function() {
 			$("#btnPost").click(function() {
 				const kor = $("#kor").val();
 				const eng = $("#eng").val();
@@ -41,14 +41,14 @@
 					success : function(data) {
 						const p = $("<p>").text(data);
 						$("#resultArea").html(p);
-						
+						// $("#resultArea").html('<p>' + data + '<p>');
 					},
 					error : function() {
 						alert("요청 실패!");
 					}
-				})
-			})
-		})
+				});
+			});
+		});
 	</script>
 </body>
 </html>

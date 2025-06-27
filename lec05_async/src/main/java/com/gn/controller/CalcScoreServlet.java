@@ -40,14 +40,15 @@ public class CalcScoreServlet extends HttpServlet {
 		int math = Integer.parseInt(request.getParameter("math"));
 		
 		int total = kor + eng + math;
-		int avg = total / 3;
+//		int avg = total / 3;
+		double avg = total / 3.0;
 		
 		String pass = "Fail";
 		if (kor >= 40 && eng >= 40 && math >= 40 && avg >= 60)
 			pass = "Pass";
 		response.setContentType("text/plain; charset=utf-8");
 		PrintWriter out = response.getWriter();
-		out.printf("총점: %d, 평균: %d, %s%n", total, avg, pass);
+		out.printf("총점: %d, 평균: %.2f, %s%n", total, avg, pass);
 		
 	}
 
