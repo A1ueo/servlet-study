@@ -73,7 +73,7 @@ public class SearchBookServlet extends HttpServlet {
 		
 		JSONObject result = new JSONObject();
 		result.put("arr", arr);
-		response.setContentType("applicaion/json; charset=utf-8");
+		response.setContentType("application/json; charset=utf-8");
 		response.getWriter().print(result);
 		System.out.println("응답");
 	}

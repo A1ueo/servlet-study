@@ -11,6 +11,7 @@
 <body>
 	<%@ include file="views/searchBook.jsp" %>
 	<%@ include file="views/scoreCalc.jsp" %>
+	<a href="/guestBook">방명록 페이지</a>
 	
 
 	<h1>1. 텍스트 데이터</h1>
