@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +14,13 @@
 	<%@ include file="views/earth.jsp" %>
 	<%@ include file="views/elOperator.jsp" %>
 	
+	
 	<h1>6. 사이트 테마 설정</h1>
 	<form method="post" action="/setTheme">
 	    <button type="submit" name="theme" value="dark">다크모드</button>
 	    <button type="submit" name="theme" value="light">라이트모드</button>
 	</form>
+	
 	
 	<h1>1. EL의 내장객체</h1>
 	<%
@@ -35,6 +39,7 @@
 	-->
 	<p>${ pageScope.test }</p>
 	<p>${ test }</p>
+	
 	
 	<h1>2. EL로 객체 다루기</h1>
 	<%@ page import="com.gn.dto.Person" %>
@@ -56,6 +61,7 @@
 	-->
 	<p>이름: ${ person.name }</p>
 	<p>나이: ${ person.age }</p>
+	
 	
 	<h1>4. EL 연산자</h1>
 	<%
@@ -97,6 +103,7 @@
 		num1이 num2보다 크고, menuList가 비어있지 않은 경우
 		${ num1 gt num2 and empty menuList }
 	</p>
+	
 	
 	<h1>5. JSTL Core Library</h1>
 	<h2>(1) 변수 선언</h2>
@@ -161,6 +168,45 @@
 		</p>
 	</c:forEach>
 	
+	<h2>(6) 경로: 기존 vs jstl</h2>
+	<script src="<%= request.getContextPath() %>/resources/jquery-3.7.1.js">
+	</script>
+	<a href="<%= request.getContextPath() %>/boardList">게시판</a>
+	
+	<script src="<c:url value='/resources/jquery-3.7.1.js'/>">
+	</script>
+	<a href="<c:url value='/boardList'/>">게시판</a>
+	<!-- 파라미터 사용하기 -->
+	<c:url var="testUrl" value="/boardList">
+		<c:param name="nowPage" value="1"/>
+	</c:url>
+	<a href="${ testUrl }">게시판</a>
+	
+	
+	<h1>8. JSTL Formatting Library</h1>
+	<h2>(1) 숫자 정보 포맷팅</h2>
+	<fmt:formatNumber value="1234.567" type="number"/>
+	<br>
+	<fmt:formatNumber value="0.875" type="percent"/>
+	<br>
+	<fmt:formatNumber value="1234.567" pattern="#,###.##"/>
+	<br>
+	<fmt:formatNumber value="1234.5" pattern="00000.00"/>
+	<br>
+	
+	<h2>(2) 날짜 정보 포맷팅</h2>
+	<c:set var="now" value="<%= new java.util.Date() %>"/>
+	<fmt:formatDate value="${ now }" type="date"/>
+	<br>
+	<fmt:formatDate value="${ now }" pattern="yy.MM.dd(E) a hh:mm:ss z"/>
+	<br>
+	
+	
+	<h1>9. JSTL Function Library</h1>
+	<c:set var="data" value="How Are You? I am fine"/>
+	<p><c:out value="${ data }"/></p>
+	<p><c:out value="${ fn:toUpperCase(data) }"/></p>
+	<p><c:out value="${ fn:replace(data, 'fine', 'apple') }"/></p>
 	
 </body>
 </html>
