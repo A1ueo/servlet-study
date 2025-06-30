@@ -1,3 +1,4 @@
 /.metadata/
 /Servers/
 *.jar
+/driver.properties
