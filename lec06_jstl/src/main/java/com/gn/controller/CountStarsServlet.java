@@ -1,10 +1,6 @@
 package com.gn.controller;
 
 import java.io.IOException;
-import java.util.List;
-
-import com.gn.dto.Student;
-import com.gn.service.StudentService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -14,17 +10,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StudentListServlet
+ * Servlet implementation class CountStarsServlet
  */
-@WebServlet("/student/list")
-public class StudentListServlet extends HttpServlet {
+@WebServlet("/countStars")
+public class CountStarsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private StudentService service = new StudentService();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StudentListServlet() {
+    public CountStarsServlet() {
         super();
     }
 
@@ -32,27 +27,19 @@ public class StudentListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		3. Service에 정보 전달
-		List<Student> list = service.getStudentList();
-//		4. DAO에 데이터베이스 연결 요청
-//		5. Mapper에 있는 쿼리 실행
-//		=> 학생 정보 목록 조회
-		for (Student s : list) {
-			System.out.println(s.getStudentNo());
-			System.out.println(s.getStudentName());
-			System.out.println(s.getStudentAge());
-		}
-//		6. /views/studentList.jsp로 보내기
-		RequestDispatcher view = request.getRequestDispatcher("/views/studentList.jsp");
-		request.setAttribute("studentList", list);
-		view.forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		request.setCharacterEncoding("utf-8");
+		RequestDispatcher view = request.getRequestDispatcher("/");
+		String num = request.getParameter("num");
+		request.setAttribute("num", num);
+		
+		view.forward(request, response);
 	}
 
 }

@@ -21,6 +21,8 @@
 	    <button type="submit" name="theme" value="light">라이트모드</button>
 	</form>
 	
+	<%@ include file="views/star.jsp" %>
+	
 	
 	<h1>1. EL의 내장객체</h1>
 	<%
