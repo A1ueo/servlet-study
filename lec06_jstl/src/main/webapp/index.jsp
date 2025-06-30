@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,12 @@
 <body>
 	<%@ include file="views/earth.jsp" %>
 	<%@ include file="views/elOperator.jsp" %>
+	
+	<h1>6. 사이트 테마 설정</h1>
+	<form method="post" action="/setTheme">
+	    <button type="submit" name="theme" value="dark">다크모드</button>
+	    <button type="submit" name="theme" value="light">라이트모드</button>
+	</form>
 	
 	<h1>1. EL의 내장객체</h1>
 	<%
@@ -90,6 +97,70 @@
 		num1이 num2보다 크고, menuList가 비어있지 않은 경우
 		${ num1 gt num2 and empty menuList }
 	</p>
+	
+	<h1>5. JSTL Core Library</h1>
+	<h2>(1) 변수 선언</h2>
+	<!--
+		c:set 사용
+		1. 자료형 선언하지 않음
+		2. 초기값 반드시 작성
+		3. c:set으로 지정한 값을 스크립틀릿에서 꺼내 쓸 수 없음
+		스크립틀릿에서 setting한 값은 jstl에서 꺼내쓸 수 있음
+	-->
+	<c:set var="num3" value="10" scope="page"/>
+	<c:set var="num4" value="20"/>
+	<c:set var="plus" value="${ num3 + num4 }"/>
+	
+	<h2>(2) 변수 출력</h2>
+	<c:set var="result" value="<b>안녕하세요!</b>"/>
+	<c:out value="${ result }"/>
+	<br>
+	<c:out value="${ result }" escapeXml="false"/>
+	${ result }
+	
+	<h2>(3) 조건문: if</h2>
+	<c:if test="${ num3 le num4 }">
+		<p>num3가 num4보다 작거나 같네요~</p>
+	</c:if>
+	
+	<h2>(4) 조건문: choose</h2>
+	<c:choose>
+		<c:when test="${ num3 gt 20 }">
+			<p>num3 > 20</p>
+		</c:when>
+		<c:when test="${ num3 ge 10 }">
+			<p>10 <= num3 <= 20</p>
+		</c:when>
+		<c:otherwise>
+			<p>num3 < 10</p>
+		</c:otherwise>
+	</c:choose>
+	
+	<h2>(5) 반복문: forEach</h2>
+	<!-- 기본 for문 처럼 사용하기 -->
+	<c:forEach var="i" begin="1" end="10" step="2">
+		<p>반복 숫자: ${ i }</p>
+	</c:forEach>
+	
+	<!-- 향상된 for문 처럼 사용하기 -->
+	<%
+		String[] colors = {"red", "green", "blue"};
+		request.setAttribute("colors", colors);
+	%>
+	<ul>
+		<c:forEach var="color" items="${ colors }">
+			<li style="color: ${ color }">${ color }</li>
+		</c:forEach>
+	</ul>
+	
+	<!-- varStatus 속성 -->
+	<c:forEach var="num" begin="0" end="5" varStatus="vs">
+		<p>
+			숫자: ${ num }, 인덱스: ${ vs.index }, 카운트: ${ vs.count },
+			첫번째?: ${ vs.first }, 마지막: ${ vs.last }
+		</p>
+	</c:forEach>
+	
 	
 </body>
 </html>
