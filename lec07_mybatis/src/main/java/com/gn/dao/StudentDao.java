@@ -19,4 +19,29 @@ public class StudentDao {
 		return list;
 	}
 	
+	public Student selectOne(int studentNo) {
+		Student student = null;
+		
+		try (SqlSession session = SessionTemplate.getSqlSession(true)) {
+			student = session.selectOne("com.gn.mapper.StudentMapper.selectOne", studentNo);
+		} catch (Exception e) {
+		}
+		
+		return student;
+	}
+
+	public Student selectByName(String studentName) {
+		SqlSession session = SessionTemplate.getSqlSession(true);
+		Student student = session.selectOne("com.gn.mapper.StudentMapper.selectByName", studentName);
+		
+		return student;
+	}
+	
+	public int insert(Student param) {
+		SqlSession session = SessionTemplate.getSqlSession(true);
+		int result = session.insert("com.gn.mapper.StudentMapper.insert", param);
+		session.close();
+		
+		return result;
+	}
 }

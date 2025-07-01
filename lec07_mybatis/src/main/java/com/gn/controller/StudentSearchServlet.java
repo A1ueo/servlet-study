@@ -1,7 +1,6 @@
 package com.gn.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import com.gn.dto.Student;
 import com.gn.service.StudentService;
@@ -13,17 +12,17 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StudentListServlet
+ * Servlet implementation class StudentSearchServlet
  */
-@WebServlet("/student/list")
-public class StudentListServlet extends HttpServlet {
+@WebServlet("/student/search")
+public class StudentSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StudentService service = new StudentService();
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StudentListServlet() {
+    public StudentSearchServlet() {
         super();
     }
 
@@ -31,15 +30,14 @@ public class StudentListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		3. Service에 정보 전달
-		List<Student> list = service.getStudentList();
-//		4. DAO에 데이터베이스 연결 요청
-//		5. Mapper에 있는 쿼리 실행
-//		=> 학생 정보 목록 조회
-//		System.out.println(list);
-//		6. /views/studentList.jsp로 보내기
-		request.setAttribute("studentList", list);
-		request.getRequestDispatcher("/views/studentList.jsp").forward(request, response);
+		String studentName = request.getParameter("student_name");
+//		System.out.println(studentName);
+		Student student = service.getStudentByName(studentName);
+//		System.out.println(student);
+		request.setAttribute("student", student);
+		request.getRequestDispatcher("/student/list").forward(request, response);
+//		response.setContentType("text/plain; charset=utf-8");
+//		response.getWriter().write("success");
 	}
 
 	/**
