@@ -37,4 +37,14 @@ public class StudentService {
 		
 		return dao.insert(param);
 	}
+
+	public int updateStudent(int no, String name, int age) {
+		Student student = new Student(no, name, age);
+		
+		return dao.update(student);
+	}
+	
+	public int deleteStudent(int no) {
+		return dao.delete(no);
+	}
 }

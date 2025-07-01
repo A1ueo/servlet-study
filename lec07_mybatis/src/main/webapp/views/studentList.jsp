@@ -38,7 +38,7 @@
 	<a href="<c:url value='/student/insert'/>">학생 등록</a>
 	
 	
-<%-- 	<%@ include file="studentDetail.jsp" %> --%>
+	<%-- <%@ include file="studentDetail.jsp" %> --%>
 	<form action="<c:url value='/student/search'/>" method="get" id="searchName">
 		<input type="text" name="student_name" id="name">
 		<input type="submit" value="이름 기준 검색">

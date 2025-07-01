@@ -9,4 +9,6 @@ public interface StudentMapper {
 	Student selectOne(int studentNo);
 	Student selectByName(String studentName);
 	int insert(Student param);
+	int updateStudent(Student student);
+	int deleteStudent(int no);
 }
