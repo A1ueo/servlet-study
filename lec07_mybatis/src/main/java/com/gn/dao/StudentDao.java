@@ -33,6 +33,7 @@ public class StudentDao {
 	public Student selectByName(String studentName) {
 		SqlSession session = SessionTemplate.getSqlSession(true);
 		Student student = session.selectOne("com.gn.mapper.StudentMapper.selectByName", studentName);
+		session.close();
 		
 		return student;
 	}
