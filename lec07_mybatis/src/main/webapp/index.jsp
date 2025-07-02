@@ -21,5 +21,26 @@
 		</li>
 	</ol>
 	
+	<!-- 상품명과 카테고리 기준 상품 검색 -->
+	<form action="<c:url value='/product/search'/>" method="get">
+		<label>상품명: </label>
+		<input type="text" name="productName">
+		<label>카테고리: </label>
+		<select name="productCategory">
+			<option value="0">선택</option>
+			<option value="1">전자제품</option>
+			<option value="2">의류</option>
+			<option value="3">식품</option>
+		</select>
+		<label>정렬 기준:</label>
+		<select name="sort">
+			<option value="0">선택</option>
+			<option value="1">가격 낮은순</option>
+			<option value="2">가격 높은순</option>
+			<option value="3">최신순</option>
+		</select>
+		<input type="submit" value="검색">
+	</form>
+	
 </body>
 </html>
