@@ -1,5 +1,8 @@
 package com.gn.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 
 import com.gn.common.sql.SqlSessionTemplate;
@@ -20,6 +23,25 @@ public class MemberDao {
 		Member result = session.selectOne("com.gn.mapper.MemberMapper.selectMember", param);
 		session.close();
 		return result;
+	}
+
+	public List<Member> selectMemberList() {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		List<Member> list = session.selectList("com.gn.mapper.MemberMapper.selectMemberList");
+		session.close();
+		
+		return list;
+	}
+	
+	public Map<Integer, Member> selectMemberMap(){
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		System.out.println("mapper");
+		System.out.println(session.selectMap("com.gn.mapper.MemberMapper.selectMebmerMap", "memberNo"));
+//		Map<Integer, Member> map = session.selectMap("com.gn.mapper.MemberMapper.selectMebmerMap", "member_no");
+		session.close();
+		
+//		return map;
+		return null;
 	}
 	
 }

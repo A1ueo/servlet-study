@@ -41,6 +41,8 @@ public class BoardService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.rollback();
+		} finally {
+			session.close();
 		}
 		
 		return result;

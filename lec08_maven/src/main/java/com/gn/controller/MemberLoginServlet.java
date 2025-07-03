@@ -53,7 +53,7 @@ public class MemberLoginServlet extends HttpServlet {
 //		3. Mapper : mapper.xml한테 쿼리 호출하기
 //		4. xml : select * 쿼리 구성 + resultMap (memberResultMap)
 		
-		System.out.println(member);
+//		System.out.println(member);
 		
 		JSONObject obj = new JSONObject();
 		obj.put("res_code", "500");

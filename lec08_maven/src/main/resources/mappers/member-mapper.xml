@@ -20,4 +20,20 @@
 			AND member_pw = #{memberPw}
 		</where>
 	</select>
+	<select id="selectMemberList" resultMap="memberResultMap">
+		SELECT member_no, member_id
+		FROM member AS m
+		JOIN board AS b
+		<where>
+			m.member_no = b.board_writer
+		</where>
+	</select>
+	<select id="selectMemberMap" resultMap="memberResultMap">
+		SELECT *
+		FROM member AS m
+		JOIN board AS b
+		<where>
+			m.member_no = b.board_writer
+		</where>
+	</select>
 </mapper>

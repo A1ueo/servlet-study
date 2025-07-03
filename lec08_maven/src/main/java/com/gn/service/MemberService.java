@@ -1,5 +1,8 @@
 package com.gn.service;
 
+import java.util.List;
+import java.util.Map;
+
 import com.gn.dao.MemberDao;
 import com.gn.dto.Member;
 
@@ -23,6 +26,18 @@ public class MemberService {
 		Member result = dao.selectMember(param);
 		
 		return result;
+	}
+
+	public List<Member> selectMemberList() {
+		List<Member> list = dao.selectMemberList();
+		
+		return list;
+	}
+	
+	public Map<Integer, Member> selectMemberMap() {
+		Map<Integer, Member> map = dao.selectMemberMap();
+		
+		return map;
 	}
 
 }

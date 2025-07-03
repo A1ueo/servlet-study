@@ -46,12 +46,18 @@
 				data : formData,
 				enctype : 'multipart/form-data',
 				contentType : false,
-				processType : false,
+				processData : false,
 				cache : false,
 				dataType : 'json',
 				success : function(data) {
-					
+					alert(data.res_msg);
+					if (data.res_code == 200) {
+						location.href = "<%= request.getContextPath() %>/boardList";
+					}
 				},
+				error : function(data) {
+					alert(data);
+				}
 			});
 		});
 	</script>

@@ -2,9 +2,12 @@ package com.gn.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import com.gn.dto.Board;
+import com.gn.dto.Member;
 import com.gn.service.BoardService;
+import com.gn.service.MemberService;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,7 +22,8 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/boardList")
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private BoardService service = new BoardService();
+	private BoardService boardService = new BoardService();
+	private MemberService memberService = new MemberService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,8 +49,18 @@ public class BoardListServlet extends HttpServlet {
 		}
 		
 		// 게시글 목록 정보 조회
-		List<Board> boardList = service.selectBoardList();
+		List<Board> boardList = boardService.selectBoardList();
+//		List<Member> memberList = memberService.selectMemberList();
+//		Map<Integer, String> memberMap = new HashMap<Integer, String>();
+		Map<Integer, Member> memberMap = memberService.selectMemberMap();
+//		for (Member m : memberList) {
+//			memberMap.put(m.getMemberNo(), m.getMemberId());
+//		}
+//		System.out.println(memberList);
+		System.out.println(memberMap);
+		
 		request.setAttribute("boardList", boardList);
+		request.setAttribute("memberMap", memberMap);
 		request.getRequestDispatcher("/views/board/list.jsp").forward(request, response);
 		
 	}

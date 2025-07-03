@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page import="java.util.Map" %>
+<% Map<Integer, String> memberMap = (Map) request.getAttribute("memberMap"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +29,7 @@
 				<tr>
 					<td>${ b.boardNo }</td>
 					<td>${ b.boardTitle }</td>
-					<td>${ b.boardWriter }</td>
+					<%-- <td>${ memberMap.get(b.boardWriter).getMemberId() }</td> --%>
 					<td>${ b.regDate }</td>
 				</tr>
 			</c:forEach>

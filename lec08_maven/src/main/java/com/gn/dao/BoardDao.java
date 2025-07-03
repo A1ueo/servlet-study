@@ -19,11 +19,15 @@ public class BoardDao {
 	}
 
 	public int insertBoard(SqlSession session, Board board) {
-		return 0;
+		int result = session.insert("com.gn.mapper.BoardMapper.insertBoard", board);
+		
+		return result;
 	}
 
 	public int insertAttach(SqlSession session, Attach attach) {
-		return 0;
+		int result = session.insert("com.gn.mapper.BoardMapper.insertAttach", attach);
+		
+		return result;
 	}
 
 }
