@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.gn.common.sql.SqlSessionTemplate;
+import com.gn.dto.Attach;
 import com.gn.dto.Board;
 
 public class BoardDao {
@@ -15,6 +16,14 @@ public class BoardDao {
 		session.close();
 		
 		return list;
+	}
+
+	public int insertBoard(SqlSession session, Board board) {
+		return 0;
+	}
+
+	public int insertAttach(SqlSession session, Attach attach) {
+		return 0;
 	}
 
 }
