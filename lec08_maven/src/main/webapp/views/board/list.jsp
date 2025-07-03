@@ -12,6 +12,7 @@
 <body>
 	<h1>게시판</h1>
 	<%@ include file="/views/includes/nav.jsp" %>
+	
 	<table border="1">
 		<thead>
 			<tr>
@@ -32,5 +33,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<a href="<c:url value='/boardWrite'/>">게시글 등록</a>
 </body>
 </html>
