@@ -7,11 +7,18 @@ import com.gn.dto.Member;
 
 public class MemberDao {
 
-	public int insertMember(Member member) {
+	public int insert(Member member) {
 		SqlSession session = SqlSessionTemplate.getSqlSession(true);
 		int result = session.insert("com.gn.mapper.MemberMapper.insertMember", member);
 		session.close();
 		
+		return result;
+	}
+
+	public Member selectMember(Member param) {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		Member result = session.selectOne("com.gn.mapper.MemberMapper.selectMember", param);
+		session.close();
 		return result;
 	}
 	

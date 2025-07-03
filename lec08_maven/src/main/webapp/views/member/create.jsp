@@ -32,15 +32,15 @@
 			const idReg = /^[a-zA-Z0-9]{4,12}$/;
 			const pwReg = /^[a-zA-Z0-9!@#$%^&*]{4,20}$/;
 			
-			if (!memberId) alert('아이디를 입력하세요');
-			else if (!idReg.test(memberId))
+			if (!memberId) { alert('아이디를 입력하세요');
+			} else if (!idReg.test(memberId)) {
 				alert('아이디는 영문 또는 숫자로 4~12자리만 가능합니다');
-			else if (!memberPw) alert('비밀번호를 입력하세요');
-			else if (!pwReg.test(memberPw))
+			} else if (!memberPw) { alert('비밀번호를 입력하세요');
+			} else if (!pwReg.test(memberPw)) {
 				alert('비밀번호는 영문/숫자/특수문자 포함 4~20자리만 가능합니다');
-			else if (memberPw !== memberPwCheck)
+			} else if (memberPw !== memberPwCheck) {
 				alert('비밀번호가 일치하지 않습니다');
-			else {
+			} else {
 				// 3. ajax로 회원가입 요청
 				$.ajax({
 					url : '/memberCreate',
@@ -50,8 +50,14 @@
 						memberPw : memberPw
 					},
 					dataType : 'json',
-					success : function() {
-						
+					success : function(data) {
+						alert(data.res_msg);
+						if (data.res_code == 200) {
+							
+						}
+					},
+					error : function(data) {
+						alert('회원 가입 실패');
 					},
 				});
 			}
