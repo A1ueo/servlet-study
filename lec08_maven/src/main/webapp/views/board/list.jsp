@@ -29,7 +29,7 @@
 				<tr>
 					<td>${ b.boardNo }</td>
 					<td>${ b.boardTitle }</td>
-					<%-- <td>${ memberMap.get(b.boardWriter).getMemberId() }</td> --%>
+					<td>${ memberMap.get(b.boardWriter).getMemberId() }</td>
 					<td>${ b.regDate }</td>
 				</tr>
 			</c:forEach>

@@ -29,7 +29,7 @@
 		</where>
 	</select>
 	<select id="selectMemberMap" resultMap="memberResultMap">
-		SELECT *
+		SELECT DISTINCT member_no, member_id
 		FROM member AS m
 		JOIN board AS b
 		<where>

@@ -35,13 +35,11 @@ public class MemberDao {
 	
 	public Map<Integer, Member> selectMemberMap(){
 		SqlSession session = SqlSessionTemplate.getSqlSession(true);
-		System.out.println("mapper");
-		System.out.println(session.selectMap("com.gn.mapper.MemberMapper.selectMebmerMap", "memberNo"));
-//		Map<Integer, Member> map = session.selectMap("com.gn.mapper.MemberMapper.selectMebmerMap", "member_no");
+		Map<Integer, Member> map = session.selectMap("com.gn.mapper.MemberMapper.selectMemberMap", "memberNo");
 		session.close();
 		
-//		return map;
-		return null;
+		return map;
+//		return null;
 	}
 	
 }
