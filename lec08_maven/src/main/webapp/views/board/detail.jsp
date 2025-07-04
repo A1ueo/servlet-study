@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%-- <%@ page import="java.util.Map" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,13 @@
 </head>
 <body>
 	<p>제목 : ${ board.boardTitle }</p>
-	<p>작성자 : ${ board.boardWriter } </p>
+	<p>작성자 : ${ memberMap.get(board.boardWriter).getMemberId() } </p>
 	<p>내용 : ${ board.boardContent } </p>
 	<p>작성일 : ${ board.regDate } </p>
 	
-	<c:if test="${not empty attach }">
+	<c:if test="${ not empty attach }">
 	    <h4>첨부파일</h4>
-	    <img src="C://upload/board/${ attach.reName }"><br>
-	    <c:if test="${ not empty attach }"></c:if>
-	    <a href="C://upload/board/${ attach.reName }">${ attach.oriName } 다운로드</a>
+	    <img src="<c:url value='/filePath?no=${ attach.attachNo }'/>"><br>
+	    <a href="<c:url value='/fileDownload?no=${ attach.attachNo }'/>">${ attach.oriName } 다운로드</a>
 	</c:if>
 </body>

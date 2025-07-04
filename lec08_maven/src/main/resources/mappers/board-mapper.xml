@@ -62,7 +62,12 @@
 	</insert>
 	
 	<select id="selectBoardOne" resultMap="boardResultMap" parameterType="_int">
-		SELECT *
+		SELECT
+			board_no
+			,board_title
+			,board_content
+			,board_writer
+			,DATE_FORMAT(reg_date, '%Y-%m-%d') AS reg_date
 		FROM board
 		WHERE board_no = #{param}
 	</select>
@@ -70,5 +75,13 @@
 		SELECT *
 		FROM attach
 		WHERE board_no = #{param}
+	</select>
+	
+	<select id="selectAttachNo" resultMap="attachResultMap" parameterType="_int">
+		SELECT *
+		FROM attach
+		<where>
+			attach_no = #{attachNo}
+		</where>
 	</select>
 </mapper>

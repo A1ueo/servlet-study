@@ -13,4 +13,5 @@ public interface BoardMapper {
 	
 	Board selectBoardOne(int param);
 	Attach selectAttachByBoardNo(int param);
+	Attach selectAttachNo(int attachNo);
 }

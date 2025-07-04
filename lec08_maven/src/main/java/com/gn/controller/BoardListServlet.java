@@ -77,7 +77,8 @@ public class BoardListServlet extends HttpServlet {
 //		System.out.println(memberMap);
 		
 		request.setAttribute("boardList", boardList);
-		request.setAttribute("memberMap", memberMap);
+//		request.setAttribute("memberMap", memberMap);
+		session.setAttribute("memberMap", memberMap);
 		request.setAttribute("paging", param);
 		request.getRequestDispatcher("/views/board/list.jsp").forward(request, response);
 		

@@ -67,4 +67,8 @@ public class BoardService {
 	public Attach selectAttachByBoardNo(int boardNo) {
 		return boardDao.selectAttachByBoardNo(boardNo);
 	}
+
+	public Attach selectAttachNo(int attachNo) {
+		return boardDao.selectAttachNo(attachNo);
+	}
 }

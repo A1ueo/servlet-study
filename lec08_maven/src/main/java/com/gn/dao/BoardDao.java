@@ -15,8 +15,6 @@ public class BoardDao {
 		List<Board> list = session.selectList("com.gn.mapper.BoardMapper.selectBoardList", param);
 		session.close();
 		
-		System.out.println("보드 리스트" + list);
-		
 		return list;
 	}
 	
@@ -24,8 +22,6 @@ public class BoardDao {
 		SqlSession session = SqlSessionTemplate.getSqlSession(true);
 		int count = session.selectOne("com.gn.mapper.BoardMapper.selectBoardCount", param);
 		session.close();
-		
-		System.out.println("보드 카운트 " + count);
 		
 		return count;
 	}
@@ -55,6 +51,13 @@ public class BoardDao {
 		Attach attach = session.selectOne("com.gn.mapper.BoardMapper.selectAttachByBoardNo", param);
 		session.close();
 		
+		return attach;
+	}
+
+	public Attach selectAttachNo(int attachNo) {
+		SqlSession session = SqlSessionTemplate.getSqlSession(true);
+		Attach attach = session.selectOne("com.gn.mapper.BoardMapper.selectAttachNo", attachNo);
+		session.close();
 		return attach;
 	}
 
