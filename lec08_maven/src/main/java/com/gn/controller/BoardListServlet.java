@@ -50,14 +50,16 @@ public class BoardListServlet extends HttpServlet {
 		
 		// 게시글 목록 정보 조회
 		List<Board> boardList = boardService.selectBoardList();
+		
 //		List<Member> memberList = memberService.selectMemberList();
 //		Map<Integer, String> memberMap = new HashMap<Integer, String>();
-		Map<Integer, Member> memberMap = memberService.selectMemberMap();
 //		for (Member m : memberList) {
 //			memberMap.put(m.getMemberNo(), m.getMemberId());
 //		}
 //		System.out.println(memberList);
-		System.out.println(memberMap);
+		
+		Map<Integer, Member> memberMap = memberService.selectMemberMap();
+//		System.out.println(memberMap);
 		
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("memberMap", memberMap);

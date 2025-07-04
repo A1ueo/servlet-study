@@ -39,7 +39,6 @@ public class MemberDao {
 		session.close();
 		
 		return map;
-//		return null;
 	}
 	
 }

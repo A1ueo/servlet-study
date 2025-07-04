@@ -36,6 +36,7 @@
 		$('#createBoardFrm').submit(function(e) {
 			e.preventDefault();
 			
+			// const form = $('#createBoardFrm'); // jquery로 불러올 수 없음
 			const form = document.getElementById('createBoardFrm');
 			const formData = new FormData(form);
 			// 유효성 검사
