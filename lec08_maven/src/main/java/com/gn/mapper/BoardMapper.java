@@ -6,7 +6,11 @@ import com.gn.dto.Attach;
 import com.gn.dto.Board;
 
 public interface BoardMapper {
-	List<Board> selectBoardList();
+	List<Board> selectBoardList(Board param);
+	int selectBoardCount(Board param);
 	int insertBoard(Board param);
 	int insertAttach(Attach param);
+	
+	Board selectBoardOne(int param);
+	Attach selectAttachByBoardNo(int param);
 }

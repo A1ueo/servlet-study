@@ -28,10 +28,14 @@
 			m.member_no = b.board_writer
 		</where>
 	</select>
-	<select id="selectMemberMap" resultMap="memberResultMap">
+	<select id="selectMemberMap" resultMap="memberResultMap"  parameterType="com.gn.dto.Board">
 		SELECT DISTINCT member_no, member_id
 		FROM member AS m
-		JOIN board AS b
+		JOIN (
+				SELECT board_writer
+				FROM board AS b
+				LIMIT #{limitPageNo} ,#{numPerPage}
+			) AS b
 		<where>
 			m.member_no = b.board_writer
 		</where>

@@ -1,19 +1,31 @@
 package com.gn.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
 import com.gn.common.sql.SqlSessionTemplate;
 import com.gn.dao.BoardDao;
+import com.gn.dao.MemberDao;
 import com.gn.dto.Attach;
 import com.gn.dto.Board;
+import com.gn.dto.Member;
 
 public class BoardService {
 	private BoardDao boardDao = new BoardDao();
+	private MemberDao memberDao = new MemberDao();
 	
-	public List<Board> selectBoardList() {
-		return boardDao.selectBoardList();
+	public List<Board> selectBoardList(Board param) {
+
+		List<Board> list = boardDao.selectBoardList(param);
+		Map<Integer, Member> map = memberDao.selectMemberMap(param);
+		
+		return list;
+	}
+	
+	public int selectBoardCount(Board param) {
+		return boardDao.selectBoardCount(param);
 	}
 
 	// 게시글 + 파일 트랜젝션 처리
@@ -46,5 +58,13 @@ public class BoardService {
 		}
 		
 		return result;
+	}
+	
+	public Board selectBoardOne(int boardNo) {
+		return boardDao.selectBoardOne(boardNo);
+	}
+
+	public Attach selectAttachByBoardNo(int boardNo) {
+		return boardDao.selectAttachByBoardNo(boardNo);
 	}
 }

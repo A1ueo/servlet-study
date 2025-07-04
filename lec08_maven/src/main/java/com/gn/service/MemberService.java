@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.gn.dao.MemberDao;
+import com.gn.dto.Board;
 import com.gn.dto.Member;
 
 public class MemberService {
@@ -34,8 +35,8 @@ public class MemberService {
 		return list;
 	}
 	
-	public Map<Integer, Member> selectMemberMap() {
-		Map<Integer, Member> map = dao.selectMemberMap();
+	public Map<Integer, Member> selectMemberMap(Board param) {
+		Map<Integer, Member> map = dao.selectMemberMap(param);
 		
 		return map;
 	}

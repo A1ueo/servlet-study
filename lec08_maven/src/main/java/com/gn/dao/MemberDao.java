@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.gn.common.sql.SqlSessionTemplate;
+import com.gn.dto.Board;
 import com.gn.dto.Member;
 
 public class MemberDao {
@@ -33,9 +34,9 @@ public class MemberDao {
 		return list;
 	}
 	
-	public Map<Integer, Member> selectMemberMap(){
+	public Map<Integer, Member> selectMemberMap(Board param){
 		SqlSession session = SqlSessionTemplate.getSqlSession(true);
-		Map<Integer, Member> map = session.selectMap("com.gn.mapper.MemberMapper.selectMemberMap", "memberNo");
+		Map<Integer, Member> map = session.selectMap("com.gn.mapper.MemberMapper.selectMemberMap", param, "memberNo");
 		session.close();
 		
 		return map;

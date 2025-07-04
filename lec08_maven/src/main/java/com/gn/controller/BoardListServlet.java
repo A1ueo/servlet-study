@@ -48,8 +48,23 @@ public class BoardListServlet extends HttpServlet {
 			}
 		}
 		
+		Board param = new Board();
+		// 현재 페이지 정보 셋팅
+		int nowPage = 1;
+		String nowPageStr = request.getParameter("nowPage");
+		if (nowPageStr != null) nowPage = Integer.parseInt(nowPageStr);
+		param.setNowPage(nowPage);
+		
+		// 검색어 셋팅
+		String keyword = request.getParameter("keyword");
+		param.setKeyword(keyword);
+		
+		// 전체 게시글 개수 조회
+		int totalData = boardService.selectBoardCount(param);
+		param.setTotalData(totalData);
+		
 		// 게시글 목록 정보 조회
-		List<Board> boardList = boardService.selectBoardList();
+		List<Board> boardList = boardService.selectBoardList(param);
 		
 //		List<Member> memberList = memberService.selectMemberList();
 //		Map<Integer, String> memberMap = new HashMap<Integer, String>();
@@ -58,11 +73,12 @@ public class BoardListServlet extends HttpServlet {
 //		}
 //		System.out.println(memberList);
 		
-		Map<Integer, Member> memberMap = memberService.selectMemberMap();
+		Map<Integer, Member> memberMap = memberService.selectMemberMap(param);
 //		System.out.println(memberMap);
 		
 		request.setAttribute("boardList", boardList);
 		request.setAttribute("memberMap", memberMap);
+		request.setAttribute("paging", param);
 		request.getRequestDispatcher("/views/board/list.jsp").forward(request, response);
 		
 	}
