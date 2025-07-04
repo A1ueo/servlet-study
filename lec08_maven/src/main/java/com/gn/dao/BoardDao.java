@@ -47,8 +47,6 @@ public class BoardDao {
 		Board board = session.selectOne("com.gn.mapper.BoardMapper.selectBoardOne", param);
 		session.close();
 		
-		System.out.println(board);
-		
 		return board;
 	}
 
